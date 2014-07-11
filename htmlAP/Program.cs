@@ -91,22 +91,32 @@ namespace htmlAP
             Console.WriteLine("4) top100 Wideo");
             ConsoleKeyInfo znak = Console.ReadKey();
             var listaRekordow = ZnajdzTopSto(znak.KeyChar);
+            
+            Console.WriteLine("1) wyswietl");
+            Console.WriteLine("2) przeszukaj");
+            ConsoleKeyInfo znak2 = Console.ReadKey();
 
-            foreach (var rekord in listaRekordow)
+            if (znak2.KeyChar == '1')
             {
-                Console.Write(rekord.kategoria + " -> " + rekord.nazwa);
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write(" " + rekord.seedy);
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(" " + rekord.peery);
-                Console.ResetColor();
-                //Console.Write(rekord);
-                Console.WriteLine();
+                foreach (var rekord in listaRekordow)
+                {
+                    Console.Write("\n" + rekord.kategoria + " -> " + rekord.nazwa);
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write(" " + rekord.seedy);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(" " + rekord.peery);
+                    Console.ResetColor();
+                    //Console.Write(rekord);
+                    Console.WriteLine();
+                }
             }
-
-            //Console.WriteLine("szukaj:");
-            //var wprowadzonyTekst = Console.ReadLine();
-            //listaRekordow.CzyZawiera(wprowadzonyTekst);
+            else if(znak2.KeyChar == '2')
+            {
+                Console.WriteLine("\nszukaj\n");
+                var wprowadzonyTekst = Console.ReadLine();
+                listaRekordow.CzyZawiera(wprowadzonyTekst);
+            }
+            
         }
     }
 }
